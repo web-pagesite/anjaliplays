@@ -57,7 +57,6 @@
 
     <!-- 1. HOME SECTION (#home) -->
     <section id="home" class="page-section active space-y-5">
-      <!-- Profile Hero Card -->
       <div class="pink-card rounded-3xl p-6 text-center relative overflow-hidden">
         <div class="absolute -right-8 -top-8 w-32 h-32 bg-pink-200/50 rounded-full blur-2xl"></div>
         <div class="absolute -left-8 -bottom-8 w-32 h-32 bg-rose-200/50 rounded-full blur-2xl"></div>
@@ -72,7 +71,6 @@
           <h1 class="text-2xl font-black text-gray-800 mt-2">Anjali Plays</h1>
           <p class="text-xs text-gray-500 max-w-sm mx-auto mt-1">Shorts Creator &bull; Competitive Highlights &bull; TDM Specialist</p>
 
-          <!-- Character UID Copy -->
           <div class="mt-4 inline-flex items-center gap-2 bg-pink-50 border border-pink-200 px-4 py-1.5 rounded-full">
             <span class="text-xs font-semibold text-gray-500">BGMI ID:</span>
             <span id="uidText" class="font-mono text-xs font-bold text-gray-800 tracking-wider">5123456789</span>
@@ -81,7 +79,6 @@
             </button>
           </div>
 
-          <!-- Social Buttons -->
           <div class="flex justify-center gap-3 mt-5">
             <a href="https://youtube.com/@anjaliplays29?si=YGlfq2NnPlqL75Gb" target="_blank" class="px-4 py-2 bg-white border border-rose-200 rounded-xl text-xs font-bold text-rose-600 hover:bg-rose-50 transition shadow-sm flex items-center gap-2">
               <i class="fab fa-youtube text-red-500 text-sm"></i> YouTube Channel
@@ -93,7 +90,7 @@
         </div>
       </div>
 
-      <!-- Sensitivity & Controls Section -->
+      <!-- Sensitivity & Controls Card -->
       <div class="pink-card rounded-3xl p-5">
         <div class="flex items-center justify-between mb-3">
           <h2 class="text-sm font-extrabold text-gray-800 flex items-center gap-2">
@@ -129,7 +126,7 @@
       </div>
     </section>
 
-    <!-- 2. TDM TOURNAMENT SECTION (#tdm) -->
+    <!-- 2. TDM OVERVIEW SECTION (#tdm) -->
     <section id="tdm" class="page-section space-y-5">
       <div class="pink-card rounded-3xl p-6">
         
@@ -143,31 +140,42 @@
           </span>
         </div>
 
-        <!-- Trust Badges -->
-        <div class="grid grid-cols-2 gap-2 my-4">
-          <div class="bg-white/80 p-2.5 rounded-xl border border-pink-100 text-center">
-            <i class="fas fa-video text-pink-500 text-xs mb-1"></i>
-            <p class="text-[11px] font-bold text-gray-700">Screen Recorded</p>
-            <p class="text-[9px] text-gray-400">Match clip uploaded on YT/Insta</p>
+        <!-- Schedule & Verification Notice Box -->
+        <div class="mt-4 bg-gradient-to-br from-pink-50 via-white to-rose-50 border border-pink-200/80 rounded-2xl p-4 shadow-sm space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-pink-500 text-white flex items-center justify-center text-xs shadow-sm">
+                <i class="fas fa-bullseye"></i>
+              </span>
+              <div>
+                <h3 class="text-xs font-extrabold text-gray-900 uppercase tracking-wide">Daily Match Hours: 08:00 PM – 10:00 PM IST</h3>
+                <p class="text-[10px] text-pink-600 font-semibold">Slots allocated strictly on a First-Come, First-Served queue.</p>
+              </div>
+            </div>
           </div>
-          <div class="bg-white/80 p-2.5 rounded-xl border border-pink-100 text-center">
-            <i class="fas fa-bolt text-amber-500 text-xs mb-1"></i>
-            <p class="text-[11px] font-bold text-gray-700">Instant Payout</p>
-            <p class="text-[9px] text-gray-400">Winning transferred via UPI right after match</p>
+
+          <div class="pt-2 border-t border-pink-100 text-[11px] text-gray-600 space-y-1.5">
+            <p class="font-bold text-rose-600 flex items-center gap-1.5 text-xs">
+              <i class="fas fa-exclamation-triangle text-amber-500"></i> Verification Notice:
+            </p>
+            <ul class="space-y-1 text-[11px] text-gray-700 pl-1">
+              <li>&bull; <strong class="text-gray-900">Instant Verification:</strong> Slot confirms only after 12-digit UTR matches bank records.</li>
+              <li>&bull; <strong class="text-rose-600">Zero Tolerance:</strong> Fake UTR submissions result in a permanent blacklist.</li>
+              <li>&bull; <strong class="text-gray-900">Fair Play:</strong> Play genuine, win real rewards.</li>
+            </ul>
           </div>
         </div>
 
         <!-- Prize Pool Grid -->
-        <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-3">TDM Challenge Categories</h2>
+        <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mt-5 mb-3">TDM Challenge Categories</h2>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           
-          <!-- ₹50 Tier -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-pink-500 bg-pink-50 px-2 py-0.5 rounded-md">Tier 1</span>
               <p class="text-xs font-bold text-gray-800 mt-1">Entry: ₹50 / Player</p>
-              <p class="text-[10px] text-gray-400">Both players put ₹50</p>
+              <p class="text-[10px] text-gray-400">Total Pool: ₹100</p>
             </div>
             <div class="text-right">
               <span class="text-[10px] text-gray-400 block">Winner Prize</span>
@@ -175,12 +183,11 @@
             </div>
           </div>
 
-          <!-- ₹100 Tier -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-purple-500 bg-purple-50 px-2 py-0.5 rounded-md">Tier 2</span>
               <p class="text-xs font-bold text-gray-800 mt-1">Entry: ₹100 / Player</p>
-              <p class="text-[10px] text-gray-400">Both players put ₹100</p>
+              <p class="text-[10px] text-gray-400">Total Pool: ₹200</p>
             </div>
             <div class="text-right">
               <span class="text-[10px] text-gray-400 block">Winner Prize</span>
@@ -188,12 +195,11 @@
             </div>
           </div>
 
-          <!-- ₹200 Tier -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-amber-500 bg-amber-50 px-2 py-0.5 rounded-md">Tier 3</span>
               <p class="text-xs font-bold text-gray-800 mt-1">Entry: ₹200 / Player</p>
-              <p class="text-[10px] text-gray-400">Both players put ₹200</p>
+              <p class="text-[10px] text-gray-400">Total Pool: ₹400</p>
             </div>
             <div class="text-right">
               <span class="text-[10px] text-gray-400 block">Winner Prize</span>
@@ -201,12 +207,11 @@
             </div>
           </div>
 
-          <!-- ₹500 Tier -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-rose-500 bg-rose-50 px-2 py-0.5 rounded-md">Tier 4</span>
               <p class="text-xs font-bold text-gray-800 mt-1">Entry: ₹500 / Player</p>
-              <p class="text-[10px] text-gray-400">Both players put ₹500</p>
+              <p class="text-[10px] text-gray-400">Total Pool: ₹1000</p>
             </div>
             <div class="text-right">
               <span class="text-[10px] text-gray-400 block">Winner Prize</span>
@@ -216,26 +221,111 @@
 
         </div>
 
-        <!-- Rules Notice -->
-        <div class="mt-4 bg-pink-50/80 p-3 rounded-2xl border border-pink-200 text-xs text-gray-600 space-y-1">
-          <p class="font-bold text-pink-700"><i class="fas fa-info-circle mr-1"></i> Fair-Play Guidelines:</p>
-          <p>&bull; Guns: M416 / AKM / M24 (No slide or mutually agreed).</p>
-          <p>&bull; Kisi bhi tarah ka third-party tool ya glitch use karne par disqualify kiya jayega.</p>
-        </div>
-
         <!-- Book Slot Button -->
         <div class="mt-6 text-center">
-          <a href="https://wa.me/919999999999?text=Hello,%20mujhe%201v1%20TDM%20slot%20book%20karna%20hai" target="_blank" 
-             class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-bold px-7 py-3 rounded-full text-xs shadow-lg shadow-pink-300 transition">
-            <i class="fab fa-whatsapp text-sm"></i> Book Slot on WhatsApp
+          <a href="#tdm-book" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-extrabold px-8 py-3.5 rounded-full text-xs shadow-lg shadow-pink-300 transition">
+            <i class="fas fa-ticket-alt"></i> Book Your TDM Slot Now &rarr;
           </a>
-          <p class="text-[10px] text-gray-400 mt-2">Safe & Verified Booking via WhatsApp</p>
+          <p class="text-[10px] text-gray-400 mt-2">Slots allocated on queue basis &bull; Safe verification</p>
         </div>
 
       </div>
     </section>
 
-    <!-- 3. SETUP & GEAR (#setup) -->
+    <!-- 3. TDM PLAYER DETAILS FORM SECTION (#tdm-book) -->
+    <section id="tdm-book" class="page-section space-y-5">
+      <div class="pink-card rounded-3xl p-6">
+        <div class="flex items-center justify-between pb-3 border-b border-pink-100">
+          <div>
+            <h2 class="text-lg font-extrabold text-gray-800">Step 1: Player Information</h2>
+            <p class="text-xs text-pink-600">Enter your BGMI details to reserve slot</p>
+          </div>
+          <a href="#tdm" class="text-xs font-bold text-gray-400 hover:text-pink-600">&larr; Back</a>
+        </div>
+
+        <form id="slotForm" onsubmit="handleProceedToPay(event)" class="mt-4 space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">BGMI In-Game Name (IGN)*</label>
+            <input type="text" id="playerName" required placeholder="e.g. ToxicQueen" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">BGMI Character ID (UID)*</label>
+            <input type="number" id="playerUID" required placeholder="e.g. 5123456789" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">Select Battle Tier*</label>
+            <select id="selectedTier" required class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white font-semibold">
+              <option value="50">Tier 1: Entry ₹50 (Winner Gets ₹75)</option>
+              <option value="100">Tier 2: Entry ₹100 (Winner Gets ₹160)</option>
+              <option value="200">Tier 3: Entry ₹200 (Winner Gets ₹300)</option>
+              <option value="500">Tier 4: Entry ₹500 (Winner Gets ₹800)</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-gray-700 mb-1">Contact Handle (Instagram ID or Phone)*</label>
+            <input type="text" id="playerContact" required placeholder="For Room ID & Password sharing" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
+          </div>
+
+          <button type="submit" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-extrabold py-3.5 rounded-2xl text-xs shadow-lg shadow-pink-300 transition">
+            Proceed to Payment &rarr;
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 4. TDM PAYMENT & UTR SUBMISSION (#tdm-pay) -->
+    <section id="tdm-pay" class="page-section space-y-5">
+      <div class="pink-card rounded-3xl p-6 text-center">
+        
+        <div class="flex items-center justify-between pb-3 border-b border-pink-100">
+          <span class="text-xs font-bold text-pink-600 bg-pink-50 px-3 py-1 rounded-full uppercase">Step 2: Payment & Verification</span>
+          <a href="#tdm-book" class="text-xs font-bold text-gray-400 hover:text-pink-600">&larr; Edit Details</a>
+        </div>
+
+        <div class="mt-4">
+          <h2 class="text-lg font-black text-gray-800">Payable Amount: <span id="displayAmount" class="text-pink-600">₹50</span></h2>
+          <p class="text-xs text-gray-500 mt-0.5">Pay strictly using GPay, PhonePe, Paytm, or FamPay</p>
+        </div>
+
+        <!-- Direct UPI Pay Buttons -->
+        <div class="mt-4 flex flex-col sm:flex-row justify-center gap-2">
+          <a id="directUpiBtn" href="#" class="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-95 text-white text-xs font-bold rounded-xl shadow-sm flex items-center justify-center gap-2">
+            <i class="fas fa-bolt text-amber-300"></i> Pay directly via UPI Apps
+          </a>
+          <button type="button" onclick="toggleQR()" class="px-4 py-2.5 bg-white border border-pink-300 text-pink-600 text-xs font-bold rounded-xl hover:bg-pink-50 transition shadow-sm">
+            <i class="fas fa-qrcode mr-1"></i> <span id="qrToggleText">Show QR Code</span>
+          </button>
+        </div>
+
+        <!-- QR Code Container (Specific to selected tier) -->
+        <div id="qrBox" class="hidden mt-4 p-3 bg-white rounded-2xl border-2 border-pink-200 inline-block shadow-sm">
+          <img id="tierQrImage" src="qr50.png" alt="Payment QR" class="w-48 h-48 object-contain rounded-xl mx-auto">
+          <p class="text-[10px] text-gray-400 mt-2 font-mono">Scan QR to pay exact fee</p>
+        </div>
+
+        <div class="my-5 border-t border-pink-100"></div>
+
+        <!-- UTR Submission Form -->
+        <div class="text-left max-w-sm mx-auto space-y-3">
+          <label class="block text-xs font-extrabold text-gray-800">
+            Enter 12-Digit UPI Ref / UTR Number*
+          </label>
+          <input type="text" id="utrNumber" maxlength="16" placeholder="e.g. 428901847291" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs font-mono font-bold focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
+          <p class="text-[10px] text-gray-400">Payment app history me 12-digit UTR/UPI Ref no mil jayega.</p>
+
+          <button type="button" id="submitBtn" onclick="submitBookingToTelegram()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold py-3.5 rounded-2xl text-xs shadow-lg shadow-emerald-200 transition flex items-center justify-center gap-2">
+            <i class="fas fa-check-circle"></i> Confirm & Submit Booking
+          </button>
+        </div>
+
+        <div id="statusMessage" class="hidden mt-4 p-3 rounded-xl text-xs font-bold"></div>
+      </div>
+    </section>
+
+    <!-- 5. SETUP & GEAR SECTION (#setup) -->
     <section id="setup" class="page-section space-y-5">
       <div class="pink-card rounded-3xl p-6">
         <h1 class="text-xl font-extrabold text-gray-900 mb-1">My Gaming Setup</h1>
@@ -267,7 +357,7 @@
       </div>
     </section>
 
-    <!-- 4. PRESETS (#presets) -->
+    <!-- 6. PRESETS SECTION (#presets) -->
     <section id="presets" class="page-section space-y-5">
       <div class="pink-card rounded-3xl p-6">
         <h1 class="text-xl font-extrabold text-gray-900 mb-1">Editing Packs & Presets</h1>
@@ -304,8 +394,21 @@
     &copy; 2026 Anjali Plays &bull; Official Creator Portal &bull; All Rights Reserved
   </footer>
 
-  <!-- Script for Navigation & Clipboard -->
+  <!-- Script for Routing, Payment & Telegram Integration -->
   <script>
+    const CONFIG = {
+      fampayUpi: "Fhxlvbfihharmeethlhg@fam",
+      botToken: "8229903786:AAEnuBAnONummicovqCxjJa1aoF4tOqb2C8",
+      chatId: "8106405157"
+    };
+
+    let bookingData = {
+      name: "",
+      uid: "",
+      tier: "50",
+      contact: ""
+    };
+
     function handleRouting() {
       const hash = window.location.hash || '#home';
       const sections = document.querySelectorAll('.page-section');
@@ -321,7 +424,8 @@
       }
 
       navLinks.forEach(link => {
-        if(link.getAttribute('href') === hash) {
+        const href = link.getAttribute('href');
+        if(href === hash || (hash.startsWith('#tdm') && href === '#tdm')) {
           link.classList.add('nav-active');
         } else {
           link.classList.remove('nav-active');
@@ -338,6 +442,88 @@
       const uid = document.getElementById('uidText').innerText;
       navigator.clipboard.writeText(uid);
       alert('BGMI ID copied: ' + uid);
+    }
+
+    function handleProceedToPay(e) {
+      e.preventDefault();
+      bookingData.name = document.getElementById('playerName').value.trim();
+      bookingData.uid = document.getElementById('playerUID').value.trim();
+      bookingData.tier = document.getElementById('selectedTier').value;
+      bookingData.contact = document.getElementById('playerContact').value.trim();
+
+      document.getElementById('displayAmount').innerText = '₹' + bookingData.tier;
+
+      // Select specific QR uploaded on GitHub: qr50.png, qr100.png, etc.
+      document.getElementById('tierQrImage').src = 'qr' + bookingData.tier + '.png';
+
+      // Set direct UPI deep-link with pre-selected amount
+      const upiUrl = `upi://pay?pa=${CONFIG.fampayUpi}&pn=AnjaliPlays&am=${bookingData.tier}&cu=INR&tn=TDM%20Slot%20${bookingData.tier}`;
+      document.getElementById('directUpiBtn').setAttribute('href', upiUrl);
+
+      // Route to payment page
+      window.location.hash = '#tdm-pay';
+    }
+
+    function toggleQR() {
+      const qrBox = document.getElementById('qrBox');
+      const text = document.getElementById('qrToggleText');
+      if (qrBox.classList.contains('hidden')) {
+        qrBox.classList.remove('hidden');
+        text.innerText = 'Hide QR Code';
+      } else {
+        qrBox.classList.add('hidden');
+        text.innerText = 'Show QR Code';
+      }
+    }
+
+    async function submitBookingToTelegram() {
+      const utr = document.getElementById('utrNumber').value.trim();
+      const statusBox = document.getElementById('statusMessage');
+      const submitBtn = document.getElementById('submitBtn');
+
+      if (!utr || utr.length < 8) {
+        alert('Please enter a valid 12-Digit UTR / Ref Number from your payment app.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Submitting...';
+
+      const message = `🔔 *NEW 1v1 TDM SLOT BOOKING* 🔔\n\n` +
+                      `👤 *IGN:* ${bookingData.name}\n` +
+                      `🆔 *UID:* \`${bookingData.uid}\`\n` +
+                      `💰 *Tier:* ₹${bookingData.tier}\n` +
+                      `🔢 *UTR Number:* \`${utr}\`\n` +
+                      `📲 *Contact:* ${bookingData.contact}\n` +
+                      `⏰ *Time:* ${new Date().toLocaleTimeString('en-IN')}`;
+
+      try {
+        const response = await fetch(`https://api.telegram.org/bot${CONFIG.botToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: CONFIG.chatId,
+            text: message,
+            parse_mode: 'Markdown'
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.ok) {
+          statusBox.className = 'mt-4 p-3 rounded-xl text-xs font-bold bg-green-100 text-green-800 border border-green-200 block';
+          statusBox.innerHTML = '✅ Slot request submitted! Jaise hi UTR bank me match hoga, match time (8:00 PM) par room details mil jayengi.';
+          document.getElementById('utrNumber').value = '';
+          submitBtn.innerText = 'Slot Reserved Successfully';
+        } else {
+          throw new Error('Telegram API Error');
+        }
+      } catch (err) {
+        statusBox.className = 'mt-4 p-3 rounded-xl text-xs font-bold bg-red-100 text-red-800 border border-red-200 block';
+        statusBox.innerHTML = '⚠️ Submission error. Please take screenshot and contact via Instagram.';
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Retry Submission';
+      }
     }
   </script>
 </body>
