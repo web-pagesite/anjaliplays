@@ -251,7 +251,7 @@
 
           <div>
             <label class="block text-xs font-bold text-gray-700 mb-1">BGMI Character ID (UID)*</label>
-            <input type="number" id="playerUID" required placeholder="e.g. 5123456789" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
+            <input type="text" id="playerUID" required placeholder="9 to 12 digit Character ID" maxlength="12" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
           </div>
 
           <div>
@@ -313,8 +313,8 @@
           <label class="block text-xs font-extrabold text-gray-800">
             Enter 12-Digit UPI Ref / UTR Number*
           </label>
-          <input type="text" id="utrNumber" maxlength="16" placeholder="e.g. 428901847291" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs font-mono font-bold focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
-          <p class="text-[10px] text-gray-400">Payment app history me 12-digit UTR/UPI Ref no mil jayega.</p>
+          <input type="text" id="utrNumber" maxlength="12" placeholder="Exact 12 numeric digits" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs font-mono font-bold focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
+          <p class="text-[10px] text-gray-400">Payment app history me 12-digit numeric UTR mil jayega.</p>
 
           <button type="button" id="submitBtn" onclick="submitBookingToTelegram()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold py-3.5 rounded-2xl text-xs shadow-lg shadow-emerald-200 transition flex items-center justify-center gap-2">
             <i class="fas fa-check-circle"></i> Confirm & Submit Booking
@@ -394,19 +394,12 @@
     &copy; 2026 Anjali Plays &bull; Official Creator Portal &bull; All Rights Reserved
   </footer>
 
-  <!-- Script for Routing, Payment & Telegram Integration -->
+  <!-- Script for Routing, Strict Validation & Telegram Integration -->
   <script>
     const CONFIG = {
       fampayUpi: "Fhxlvbfihharmeethlhg@fam",
       botToken: "8229903786:AAEnuBAnONummicovqCxjJa1aoF4tOqb2C8",
       chatId: "8106405157"
-    };
-
-    let bookingData = {
-      name: "",
-      uid: "",
-      tier: "50",
-      contact: ""
     };
 
     function handleRouting() {
@@ -446,21 +439,37 @@
 
     function handleProceedToPay(e) {
       e.preventDefault();
-      bookingData.name = document.getElementById('playerName').value.trim();
-      bookingData.uid = document.getElementById('playerUID').value.trim();
-      bookingData.tier = document.getElementById('selectedTier').value;
-      bookingData.contact = document.getElementById('playerContact').value.trim();
+      
+      const name = document.getElementById('playerName').value.trim();
+      const uid = document.getElementById('playerUID').value.trim();
+      const tier = document.getElementById('selectedTier').value;
+      const contact = document.getElementById('playerContact').value.trim();
 
-      document.getElementById('displayAmount').innerText = '₹' + bookingData.tier;
+      // BGMI Character ID validation (Must be numeric and between 9 to 12 digits)
+      if (!/^\d{9,12}$/.test(uid)) {
+        alert('Invalid BGMI UID! Character ID must be between 9 to 12 digits (numeric only).');
+        return;
+      }
 
-      // Select specific QR uploaded on GitHub: qr50.png, qr100.png, etc.
-      document.getElementById('tierQrImage').src = 'qr' + bookingData.tier + '.png';
+      if (!name || !contact) {
+        alert('Please fill all player details properly.');
+        return;
+      }
 
-      // Set direct UPI deep-link with pre-selected amount
-      const upiUrl = `upi://pay?pa=${CONFIG.fampayUpi}&pn=AnjaliPlays&am=${bookingData.tier}&cu=INR&tn=TDM%20Slot%20${bookingData.tier}`;
+      // Save safely in LocalStorage
+      localStorage.setItem('tdm_name', name);
+      localStorage.setItem('tdm_uid', uid);
+      localStorage.setItem('tdm_tier', tier);
+      localStorage.setItem('tdm_contact', contact);
+
+      // Update UI for Payment Page
+      document.getElementById('displayAmount').innerText = '₹' + tier;
+      document.getElementById('tierQrImage').src = 'qr' + tier + '.png';
+
+      const upiUrl = `upi://pay?pa=${CONFIG.fampayUpi}&pn=AnjaliPlays&am=${tier}&cu=INR&tn=TDM%20Slot%20${tier}`;
       document.getElementById('directUpiBtn').setAttribute('href', upiUrl);
 
-      // Route to payment page
+      // Navigate to Payment Screen
       window.location.hash = '#tdm-pay';
     }
 
@@ -481,20 +490,32 @@
       const statusBox = document.getElementById('statusMessage');
       const submitBtn = document.getElementById('submitBtn');
 
-      if (!utr || utr.length < 8) {
-        alert('Please enter a valid 12-Digit UTR / Ref Number from your payment app.');
+      // Strict UTR validation: Exactly 12 numeric digits only
+      if (!/^\d{12}$/.test(utr)) {
+        alert('Invalid UTR! Please enter exact 12-digit numeric UPI Ref / UTR number.');
+        return;
+      }
+
+      const name = localStorage.getItem('tdm_name');
+      const uid = localStorage.getItem('tdm_uid');
+      const tier = localStorage.getItem('tdm_tier');
+      const contact = localStorage.getItem('tdm_contact');
+
+      if (!name || !uid) {
+        alert('Player session expired! Please go back and fill player details again.');
+        window.location.hash = '#tdm-book';
         return;
       }
 
       submitBtn.disabled = true;
-      submitBtn.innerText = 'Submitting...';
+      submitBtn.innerText = 'Verifying & Submitting...';
 
       const message = `🔔 *NEW 1v1 TDM SLOT BOOKING* 🔔\n\n` +
-                      `👤 *IGN:* ${bookingData.name}\n` +
-                      `🆔 *UID:* \`${bookingData.uid}\`\n` +
-                      `💰 *Tier:* ₹${bookingData.tier}\n` +
+                      `👤 *IGN:* ${name}\n` +
+                      `🆔 *UID:* \`${uid}\`\n` +
+                      `💰 *Tier:* ₹${tier}\n` +
                       `🔢 *UTR Number:* \`${utr}\`\n` +
-                      `📲 *Contact:* ${bookingData.contact}\n` +
+                      `📲 *Contact:* ${contact}\n` +
                       `⏰ *Time:* ${new Date().toLocaleTimeString('en-IN')}`;
 
       try {
@@ -512,9 +533,15 @@
 
         if (result.ok) {
           statusBox.className = 'mt-4 p-3 rounded-xl text-xs font-bold bg-green-100 text-green-800 border border-green-200 block';
-          statusBox.innerHTML = '✅ Slot request submitted! Jaise hi UTR bank me match hoga, match time (8:00 PM) par room details mil jayengi.';
+          statusBox.innerHTML = '✅ Slot request submitted! Jaise hi UTR bank record se match hoga, match time (8:00 PM) par room details mil jayengi.';
           document.getElementById('utrNumber').value = '';
           submitBtn.innerText = 'Slot Reserved Successfully';
+          
+          // Clear session data
+          localStorage.removeItem('tdm_name');
+          localStorage.removeItem('tdm_uid');
+          localStorage.removeItem('tdm_tier');
+          localStorage.removeItem('tdm_contact');
         } else {
           throw new Error('Telegram API Error');
         }
