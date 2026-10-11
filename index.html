@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BGMI Queen - Official Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #0b0813; color: #f3e8ff; font-family: sans-serif; }
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+    .glass { background: rgba(26, 16, 43, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(236, 72, 153, 0.2); }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- Header / Navigation Bar -->
+  <header class="sticky top-0 z-50 glass border-b border-pink-500/20">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#home" class="text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+        BGMI QUEEN
+      </a>
+      <nav class="flex space-x-2 text-sm font-semibold">
+        <a href="#home" class="nav-btn px-3 py-1.5 rounded-lg hover:bg-pink-600/30 transition">Home</a>
+        <a href="#tdm" class="nav-btn px-3 py-1.5 rounded-lg hover:bg-pink-600/30 transition text-pink-400 font-bold">1v1 TDM</a>
+        <a href="#setup" class="nav-btn px-3 py-1.5 rounded-lg hover:bg-pink-600/30 transition">Gear</a>
+        <a href="#presets" class="nav-btn px-3 py-1.5 rounded-lg hover:bg-pink-600/30 transition">Presets</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow">
+
+    <!-- 1. HOME PAGE (#home) -->
+    <section id="home" class="page-section active space-y-6">
+      <div class="glass rounded-2xl p-6 text-center shadow-lg shadow-pink-950/40">
+        <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 p-1 mb-4 shadow-md">
+          <div class="w-full h-full rounded-full bg-[#120a1f] flex items-center justify-center text-3xl font-black text-pink-400">
+            BQ
+          </div>
+        </div>
+        <h1 class="text-2xl font-black">Official BGMI Gaming Hub</h1>
+        <p class="text-xs text-pink-300 mt-1">Shorts Creator &bull; Competitive Highlights</p>
+        
+        <!-- UID Copy Card -->
+        <div class="mt-4 inline-flex items-center gap-3 bg-pink-950/40 border border-pink-500/30 px-4 py-2 rounded-full">
+          <span class="text-sm font-mono text-pink-200">UID: <b id="uidText">5123456789</b></span>
+          <button onclick="copyUID()" class="bg-pink-600 hover:bg-pink-500 text-xs font-bold px-3 py-1 rounded-full transition">
+            Copy UID
+          </button>
+        </div>
+
+        <div class="flex justify-center gap-4 mt-6">
+          <a href="https://instagram.com" target="_blank" class="px-4 py-2 glass rounded-xl text-xs flex items-center gap-2 hover:border-pink-400">
+            <i class="fab fa-instagram text-pink-400"></i> Instagram
+          </a>
+          <a href="https://youtube.com" target="_blank" class="px-4 py-2 glass rounded-xl text-xs flex items-center gap-2 hover:border-red-400">
+            <i class="fab fa-youtube text-red-400"></i> YouTube
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Sensitivity Card -->
+      <div class="glass rounded-2xl p-5 border border-purple-500/30">
+        <h2 class="text-lg font-bold text-pink-300 mb-3"><i class="fas fa-crosshairs mr-2"></i>Sensitivity & Controls</h2>
+        <div class="space-y-3">
+          <div class="flex items-center justify-between bg-black/40 p-3 rounded-xl border border-white/5">
+            <div>
+              <p class="text-sm font-semibold">Gyroscope (Full Gyro)</p>
+              <p class="text-xs text-gray-400">7284-9032-1102-8849</p>
+            </div>
+            <button onclick="navigator.clipboard.writeText('7284-9032-1102-8849'); alert('Code copied!');" class="text-xs bg-purple-700/60 px-3 py-1.5 rounded-lg border border-purple-400/40">Copy</button>
+          </div>
+          <div class="flex items-center justify-between bg-black/40 p-3 rounded-xl border border-white/5">
+            <div>
+              <p class="text-sm font-semibold">4-Finger Claw Layout</p>
+              <p class="text-xs text-gray-400">7284-9032-1102-8850</p>
+            </div>
+            <button onclick="navigator.clipboard.writeText('7284-9032-1102-8850'); alert('Code copied!');" class="text-xs bg-purple-700/60 px-3 py-1.5 rounded-lg border border-purple-400/40">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TDM TOURNAMENT PAGE (#tdm) -->
+    <section id="tdm" class="page-section space-y-6">
+      <div class="glass rounded-2xl p-6 border-pink-500/40">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-2xl font-black text-pink-400">1v1 TDM Challenge</h1>
+            <p class="text-xs text-gray-300 mt-1">Play match &bull; Recorded video uploaded on YT/Insta</p>
+          </div>
+          <span class="text-xs bg-green-900/60 text-green-300 border border-green-500/40 px-3 py-1 rounded-full font-bold">SLOTS OPEN</span>
+        </div>
+
+        <!-- Rules Notice -->
+        <div class="mt-4 p-3 bg-pink-950/30 rounded-xl border border-pink-500/20 text-xs space-y-1">
+          <p class="font-bold text-pink-300"><i class="fas fa-shield-alt mr-1"></i> Match Rules:</p>
+          <p>&bull; Guns: M416 / AKM / M24 (No slide or standard TDM rules mutually agreed).</p>
+          <p>&bull; Match screen record hoga aur winner clips YouTube Shorts / Instagram par credit ke sath aayengi.</p>
+        </div>
+
+        <!-- Prize Pool Table -->
+        <h2 class="text-sm font-bold text-gray-200 uppercase tracking-wider mt-6 mb-3">Entry & Prize Structure</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          
+          <div class="bg-black/40 border border-pink-500/30 p-4 rounded-xl flex justify-between items-center">
+            <div>
+              <span class="text-xs bg-pink-600/30 px-2 py-0.5 rounded text-pink-300">Starter Tier</span>
+              <p class="text-sm font-bold mt-1">Entry: ₹50 / Player</p>
+              <p class="text-xs text-gray-400">Opponent: ₹50</p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-black text-green-400">Win ₹75</p>
+            </div>
+          </div>
+
+          <div class="bg-black/40 border border-pink-500/30 p-4 rounded-xl flex justify-between items-center">
+            <div>
+              <span class="text-xs bg-purple-600/30 px-2 py-0.5 rounded text-purple-300">Semi Pro</span>
+              <p class="text-sm font-bold mt-1">Entry: ₹100 / Player</p>
+              <p class="text-xs text-gray-400">Opponent: ₹100</p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-black text-green-400">Win ₹160</p>
+            </div>
+          </div>
+
+          <div class="bg-black/40 border border-pink-500/30 p-4 rounded-xl flex justify-between items-center">
+            <div>
+              <span class="text-xs bg-yellow-600/30 px-2 py-0.5 rounded text-yellow-300">Pro Battle</span>
+              <p class="text-sm font-bold mt-1">Entry: ₹200 / Player</p>
+              <p class="text-xs text-gray-400">Opponent: ₹200</p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-black text-green-400">Win ₹300</p>
+            </div>
+          </div>
+
+          <div class="bg-black/40 border border-pink-500/30 p-4 rounded-xl flex justify-between items-center">
+            <div>
+              <span class="text-xs bg-red-600/30 px-2 py-0.5 rounded text-red-300">High Roller</span>
+              <p class="text-sm font-bold mt-1">Entry: ₹500 / Player</p>
+              <p class="text-xs text-gray-400">Opponent: ₹500</p>
+            </div>
+            <div class="text-right">
+              <p class="text-lg font-black text-green-400">Win ₹800</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Registration CTA via WhatsApp / Form -->
+        <div class="mt-6 pt-4 border-t border-white/10 text-center">
+          <p class="text-xs text-gray-400 mb-3">Room slot book karne ke liye WhatsApp par UID & Screenshot bhejein</p>
+          <a href="https://wa.me/919999999999?text=Hi,%20mujhe%201v1%20TDM%20match%20khelna%20hai" target="_blank" 
+             class="inline-block bg-gradient-to-r from-pink-600 to-purple-600 hover:opacity-90 font-bold px-6 py-2.5 rounded-xl text-sm shadow-lg shadow-pink-600/30 transition">
+            Book Slot on WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. GEAR & SETUP PAGE (#setup) -->
+    <section id="setup" class="page-section space-y-6">
+      <div class="glass rounded-2xl p-6">
+        <h1 class="text-2xl font-black text-pink-400 mb-1">My Gaming Setup</h1>
+        <p class="text-xs text-gray-300 mb-6">Original gear aur accessories jo matches me use hoti hain.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Item 1 -->
+          <div class="bg-black/40 p-4 rounded-xl border border-white/5 flex gap-4 items-center">
+            <div class="w-14 h-14 bg-pink-900/30 rounded-lg flex items-center justify-center text-xl text-pink-400">
+              <i class="fas fa-hand-sparkles"></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-sm font-bold">Pro Gaming Finger Sleeves</h3>
+              <p class="text-xs text-gray-400">Zero sweat, smooth swipe</p>
+              <a href="#" target="_blank" class="inline-block mt-2 text-xs text-pink-400 font-bold hover:underline">Check on Amazon &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="bg-black/40 p-4 rounded-xl border border-white/5 flex gap-4 items-center">
+            <div class="w-14 h-14 bg-purple-900/30 rounded-lg flex items-center justify-center text-xl text-purple-400">
+              <i class="fas fa-headphones"></i>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-sm font-bold">Gaming Earphones + Type-C</h3>
+              <p class="text-xs text-gray-400">Clear footsteps audio</p>
+              <a href="#" target="_blank" class="inline-block mt-2 text-xs text-purple-400 font-bold hover:underline">Check on Amazon &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PRESETS & ASSETS PAGE (#presets) -->
+    <section id="presets" class="page-section space-y-6">
+      <div class="glass rounded-2xl p-6">
+        <h1 class="text-2xl font-black text-pink-400 mb-1">Editing Packs & Presets</h1>
+        <p class="text-xs text-gray-300 mb-6">Montage clips, shakes, aur color grading presets download karein.</p>
+
+        <div class="space-y-3">
+          <div class="bg-black/40 p-4 rounded-xl border border-white/5 flex justify-between items-center">
+            <div>
+              <p class="text-sm font-bold">Aesthetic BGMI CC (Color Grading)</p>
+              <p class="text-xs text-gray-400">Alight Motion XML Preset</p>
+            </div>
+            <a href="#" class="px-4 py-1.5 bg-pink-600 hover:bg-pink-500 rounded-lg text-xs font-bold transition">Download</a>
+          </div>
+
+          <div class="bg-black/40 p-4 rounded-xl border border-white/5 flex justify-between items-center">
+            <div>
+              <p class="text-sm font-bold">Sync Shakes & Sound Pack</p>
+              <p class="text-xs text-gray-400">CapCut / VN Templates</p>
+            </div>
+            <a href="#" class="px-4 py-1.5 bg-purple-600 hover:bg-purple-500 rounded-lg text-xs font-bold transition">Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-4 text-center text-xs text-gray-500 border-t border-white/5">
+    &copy; 2026 BGMI Queen Hub &bull; Hosted with Vercel & GitHub
+  </footer>
+
+  <!-- Hash Routing Script (Single Page Application) -->
+  <script>
+    function handleRouting() {
+      const hash = window.location.hash || '#home';
+      const sections = document.querySelectorAll('.page-section');
+      const targetSection = document.querySelector(hash);
+
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      if (targetSection) {
+        targetSection.classList.add('active');
+      } else {
+        document.getElementById('home').classList.add('active');
+      }
+
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('hashchange', handleRouting);
+    window.addEventListener('DOMContentLoaded', handleRouting);
+
+    function copyUID() {
+      const uid = document.getElementById('uidText').innerText;
+      navigator.clipboard.writeText(uid);
+      alert('UID copied successfully: ' + uid);
+    }
+  </script>
+</body>
+</html>
