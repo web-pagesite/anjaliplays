@@ -33,22 +33,57 @@
 <body class="min-h-screen flex flex-col justify-between">
 
   <!-- Header / Navigation -->
-  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-pink-100 shadow-sm">
-    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-2">
-        <img src="pic.jpg" alt="Anjali Plays" class="w-8 h-8 rounded-full object-cover border border-pink-300 shadow-sm" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Anjali+Plays&background=f472b6&color=fff';">
-        <span class="text-lg font-extrabold tracking-tight text-gray-800">
-          Anjali<span class="text-pink-500">Plays</span>
-        </span>
-        <span class="text-blue-500 text-xs" title="Official Creator"><i class="fas fa-check-circle"></i></span>
-      </a>
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-pink-100 shadow-sm">
+    <div class="max-w-3xl mx-auto px-4 py-2.5">
+      <!-- Top Row: Logo & User Profile / Login -->
+      <div class="flex items-center justify-between pb-2 border-b border-pink-50 sm:border-0 sm:pb-0">
+        <a href="#home" class="flex items-center gap-2">
+          <img src="pic.jpg" alt="Anjali Plays" class="w-8 h-8 rounded-full object-cover border border-pink-300 shadow-sm" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Anjali+Plays&background=f472b6&color=fff';">
+          <span class="text-lg font-extrabold tracking-tight text-gray-800">
+            Anjali<span class="text-pink-500">Plays</span>
+          </span>
+          <span class="text-blue-500 text-xs" title="Official Creator"><i class="fas fa-check-circle"></i></span>
+        </a>
 
-      <nav class="flex space-x-1.5 text-xs font-bold items-center">
-        <a href="#home" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Home</a>
-        <a href="#tdm" class="nav-btn px-3 py-1.5 rounded-full text-pink-600 bg-pink-50 border border-pink-200 transition">1v1 TDM</a>
-        <a href="#leaderboard" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Leaderboard</a>
-        <a href="#setup" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Setup</a>
-        <a href="#presets" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Presets</a>
+        <!-- Google Profile Button & Dropdown -->
+        <div class="relative">
+          <button id="authProfileBtn" onclick="toggleUserDropdown()" class="flex items-center gap-1.5 p-1 rounded-full border border-pink-200 bg-pink-50/60 hover:bg-pink-100 transition shadow-sm">
+            <img id="headerUserAvatar" src="https://ui-avatars.com/api/?name=Guest&background=fce7f3&color=db2777" alt="User" class="w-7 h-7 rounded-full object-cover border border-pink-300">
+            <span id="headerUserName" class="text-[11px] font-bold text-gray-700 hidden sm:inline max-w-[90px] truncate px-1">Login</span>
+            <i class="fas fa-chevron-down text-[9px] text-pink-500 px-1"></i>
+          </button>
+
+          <!-- User Info & Logout Popup -->
+          <div id="userDropdown" class="hidden absolute right-0 mt-2 w-56 bg-white rounded-2xl shadow-xl border border-pink-100 p-3 z-50">
+            <div id="loggedInView" class="hidden">
+              <div class="flex items-center gap-2 pb-2 border-b border-pink-100">
+                <img id="dropdownAvatar" src="" class="w-8 h-8 rounded-full border border-pink-300">
+                <div class="overflow-hidden">
+                  <p id="dropdownName" class="text-xs font-bold text-gray-800 truncate"></p>
+                  <p id="dropdownEmail" class="text-[10px] text-gray-500 truncate"></p>
+                </div>
+              </div>
+              <button onclick="handleUserLogout()" class="mt-2.5 w-full py-1.5 px-3 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-xl text-xs font-bold transition flex items-center justify-center gap-1.5">
+                <i class="fas fa-sign-out-alt"></i> Logout Account
+              </button>
+            </div>
+            <div id="loggedOutView" class="text-center py-1">
+              <p class="text-xs text-gray-600 mb-2 font-medium">Account not connected</p>
+              <button onclick="triggerGoogleSignIn()" class="w-full py-1.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white rounded-xl text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5">
+                <i class="fab fa-google"></i> Sign In with Google
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Row: Navigation Buttons (Spacing Added) -->
+      <nav class="flex items-center justify-center sm:justify-start space-x-1.5 text-xs font-bold pt-2 overflow-x-auto">
+        <a href="#home" class="nav-btn px-3 py-1 rounded-full text-gray-600 hover:text-pink-600 transition whitespace-nowrap">Home</a>
+        <a href="#tdm" class="nav-btn px-3 py-1 rounded-full text-pink-600 bg-pink-50 border border-pink-200 transition whitespace-nowrap">1v1 TDM</a>
+        <a href="#leaderboard" class="nav-btn px-3 py-1 rounded-full text-gray-600 hover:text-pink-600 transition whitespace-nowrap">Leaderboard</a>
+        <a href="#setup" class="nav-btn px-3 py-1 rounded-full text-gray-600 hover:text-pink-600 transition whitespace-nowrap">Setup</a>
+        <a href="#presets" class="nav-btn px-3 py-1 rounded-full text-gray-600 hover:text-pink-600 transition whitespace-nowrap">Presets</a>
       </nav>
     </div>
   </header>
@@ -141,7 +176,6 @@
           </span>
         </div>
 
-        <!-- Schedule & Verification Notice Box -->
         <div class="mt-4 bg-gradient-to-br from-pink-50 via-white to-rose-50 border border-pink-200/80 rounded-2xl p-4 shadow-sm space-y-3">
           <div class="flex items-center justify-between flex-wrap gap-2">
             <div class="flex items-center gap-2">
@@ -160,7 +194,7 @@
               <i class="fas fa-exclamation-triangle text-amber-500"></i> Verification Notice:
             </p>
             <ul class="space-y-1 text-[11px] text-gray-700 pl-1">
-              <li>&bull; <strong class="text-gray-900">Google Authentication Mandatory:</strong> 1v1 booking ke liye Google account se sign-in karna zaroori hai.</li>
+              <li>&bull; <strong class="text-gray-900">Google Authentication Mandatory:</strong> Form submit karne ke liye verified Google ID zaroori hai.</li>
               <li>&bull; <strong class="text-gray-900">Instant Verification:</strong> Slot confirms only after 12-digit UTR matches bank records.</li>
               <li>&bull; <strong class="text-rose-600">Zero Tolerance:</strong> Fake UTR submissions result in a permanent blacklist.</li>
             </ul>
@@ -171,7 +205,6 @@
         <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mt-5 mb-3">TDM Challenge Categories</h2>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
             <div>
               <span class="text-[10px] font-bold uppercase tracking-wider text-pink-500 bg-pink-50 px-2 py-0.5 rounded-md">Tier 1</span>
@@ -219,15 +252,14 @@
               <span class="text-lg font-black text-emerald-600">₹800</span>
             </div>
           </div>
-
         </div>
 
-        <!-- Book Slot Button (Triggers Google Auth check) -->
+        <!-- Book Slot Button (Opens Form Directly) -->
         <div class="mt-6 text-center">
-          <button onclick="checkAuthAndBook()" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-extrabold px-8 py-3.5 rounded-full text-xs shadow-lg shadow-pink-300 transition">
+          <a href="#tdm-book" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-extrabold px-8 py-3.5 rounded-full text-xs shadow-lg shadow-pink-300 transition">
             <i class="fas fa-ticket-alt"></i> Book Your TDM Slot Now &rarr;
-          </button>
-          <p class="text-[10px] text-gray-400 mt-2">Google Sign-In required &bull; Instant slot reservation</p>
+          </a>
+          <p class="text-[10px] text-gray-400 mt-2">Complete details in official registration form</p>
         </div>
 
       </div>
@@ -239,9 +271,25 @@
         <div class="flex items-center justify-between pb-3 border-b border-pink-100">
           <div>
             <h2 class="text-lg font-extrabold text-gray-800">Step 1: Player Information</h2>
-            <p class="text-xs text-pink-600">Authenticated via: <span id="loggedUserEmail" class="font-bold underline"></span></p>
+            <p class="text-xs text-pink-600">Enter details & verify Google ID to proceed</p>
           </div>
           <a href="#tdm" class="text-xs font-bold text-gray-400 hover:text-pink-600">&larr; Back</a>
+        </div>
+
+        <!-- Compulsory Google Auth Banner inside Form -->
+        <div id="authPromptBox" class="mt-4 p-3.5 rounded-2xl border border-pink-200 bg-gradient-to-r from-pink-50 to-white flex flex-col sm:flex-row items-center justify-between gap-3 shadow-sm">
+          <div class="flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-full bg-white border border-pink-200 text-rose-500 flex items-center justify-center text-sm shadow-sm">
+              <i class="fab fa-google"></i>
+            </span>
+            <div>
+              <p class="text-xs font-extrabold text-gray-800">Google Authentication (Compulsory)*</p>
+              <p id="formAuthStatus" class="text-[11px] text-rose-500 font-semibold">Account not connected. Please connect to continue.</p>
+            </div>
+          </div>
+          <button type="button" id="formAuthBtn" onclick="triggerGoogleSignIn()" class="w-full sm:w-auto px-4 py-2 bg-white hover:bg-pink-50 text-pink-600 border border-pink-300 rounded-xl text-xs font-extrabold transition shadow-sm flex items-center justify-center gap-1.5">
+            <i class="fas fa-link text-xs"></i> Connect Google
+          </button>
         </div>
 
         <form id="slotForm" onsubmit="handleProceedToPay(event)" class="mt-4 space-y-4">
@@ -332,28 +380,9 @@
         <h1 class="text-xl font-extrabold text-gray-900 mb-1">TDM Hall of Fame & Leaderboard</h1>
         <p class="text-xs text-gray-500 mb-4">Top winners of daily competitive 1v1 battles.</p>
 
+        <!-- Dynamically rendered from Persistent Storage -->
         <div class="space-y-2.5" id="leaderboardList">
-          <div class="bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-xs">#1</span>
-              <div>
-                <p class="text-xs font-bold text-gray-800">ToxicQueen</p>
-                <p class="text-[10px] text-gray-400">Tier 4 Winner (₹800)</p>
-              </div>
-            </div>
-            <span class="text-xs font-extrabold text-emerald-600">+82 Kills</span>
-          </div>
-
-          <div class="bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <span class="w-7 h-7 rounded-full bg-gray-100 text-gray-700 font-bold flex items-center justify-center text-xs">#2</span>
-              <div>
-                <p class="text-xs font-bold text-gray-800">AlphaOp</p>
-                <p class="text-[10px] text-gray-400">Tier 3 Winner (₹300)</p>
-              </div>
-            </div>
-            <span class="text-xs font-extrabold text-emerald-600">+45 Kills</span>
-          </div>
+          <!-- Entries rendered automatically via JS -->
         </div>
       </div>
     </section>
@@ -365,7 +394,6 @@
         <p class="text-xs text-gray-500 mb-5">Accessories aur devices jo main competitive aur short videos ke liye use karti hoon.</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
             <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
               <i class="fas fa-hand-sparkles"></i>
@@ -409,7 +437,6 @@
               <a href="https://www.amazon.in/gp/aw/d/B0DXQ8X9GT?linkCode=ll2&tag=meet04c0-21&linkId=54b2a1868341fb41f62a2b9edfb31429" target="_blank" class="text-[11px] font-bold text-pink-600 hover:underline mt-1 inline-block">Amazon Link &rarr;</a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -465,11 +492,11 @@
             ✅ Access Granted! Welcome Meet. (Admin Dashboard Active)
           </div>
           <div>
-            <h3 class="text-xs font-bold text-gray-700 mb-2">Manage Leaderboard Entries:</h3>
-            <textarea id="adminLeaderboardData" rows="4" class="w-full p-3 rounded-xl border border-pink-200 text-xs font-mono bg-white focus:outline-none">ToxicQueen - Tier 4 Winner (₹800) [+82 Kills]
-AlphaOp - Tier 3 Winner (₹300) [+45 Kills]</textarea>
-            <button onclick="alert('Leaderboard settings saved securely!')" class="mt-2 px-4 py-2 bg-pink-500 text-white rounded-xl text-xs font-bold shadow-sm">
-              Save Leaderboard
+            <h3 class="text-xs font-bold text-gray-700 mb-1">Manage Leaderboard Entries:</h3>
+            <p class="text-[11px] text-gray-500 mb-2">Har line mein format: <code>Naam - Tier Info [+Kills]</code> (Jaise niche likha hai):</p>
+            <textarea id="adminLeaderboardData" rows="6" class="w-full p-3 rounded-xl border border-pink-200 text-xs font-mono bg-white focus:outline-none focus:ring-2 focus:ring-pink-300"></textarea>
+            <button onclick="saveAdminLeaderboard()" class="mt-3 px-5 py-2.5 bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white rounded-xl text-xs font-extrabold shadow-sm transition">
+              <i class="fas fa-save mr-1"></i> Save Leaderboard
             </button>
           </div>
         </div>
@@ -481,14 +508,13 @@ AlphaOp - Tier 3 Winner (₹300) [+45 Kills]</textarea>
   <!-- Footer with Hidden Admin Button -->
   <footer class="py-4 text-center text-[11px] text-gray-400 border-t border-pink-100 bg-white/40 flex flex-col items-center gap-1">
     <p>&copy; 2026 Anjali Plays &bull; Official Creator Portal &bull; All Rights Reserved</p>
-    <!-- SECRET ADMIN BUTTON: Ye footer ke bilkul neeche chhota sa discreet icon hai jo kisi ko easily nahi dikhega -->
     <a href="#admin-panel" class="text-[9px] text-gray-300 hover:text-pink-500 transition font-mono tracking-widest"><i class="fas fa-lock-open text-[8px]"></i> [Admin Portal]</a>
   </footer>
 
   <!-- Firebase SDK and Core Application Scripts -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-    import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
 
     const firebaseConfig = {
@@ -506,36 +532,114 @@ AlphaOp - Tier 3 Winner (₹300) [+45 Kills]</textarea>
     const provider = new GoogleAuthProvider();
     const analytics = getAnalytics(app);
 
-    window.checkAuthAndBook = function() {
-      // Direct Google Pop-up / Redirect Authentication (Email capture)
+    // Make Auth available globally
+    window.triggerGoogleSignIn = function() {
       signInWithPopup(auth, provider)
         .then((result) => {
-          const user = result.user;
-          localStorage.setItem('user_email', user.email);
-          document.getElementById('loggedUserEmail').innerText = user.email;
-          window.location.hash = '#tdm-book';
+          updateUserAuthState(result.user);
         })
         .catch((error) => {
-          // Fallback to redirect if popup is blocked
           signInWithRedirect(auth, provider);
         });
-    }
+    };
 
-    // Check redirect result on load
+    window.handleUserLogout = function() {
+      signOut(auth).then(() => {
+        localStorage.removeItem('user_email');
+        localStorage.removeItem('user_name');
+        localStorage.removeItem('user_photo');
+        updateUserAuthState(null);
+        alert('Logged out successfully.');
+      });
+    };
+
+    onAuthStateChanged(auth, (user) => {
+      updateUserAuthState(user);
+    });
+
     getRedirectResult(auth).then((result) => {
       if (result && result.user) {
-        localStorage.setItem('user_email', result.user.email);
+        updateUserAuthState(result.user);
       }
-    }).catch((error) => {});
+    }).catch(() => {});
+
+    function updateUserAuthState(user) {
+      const headerAvatar = document.getElementById('headerUserAvatar');
+      const headerName = document.getElementById('headerUserName');
+      const loggedInView = document.getElementById('loggedInView');
+      const loggedOutView = document.getElementById('loggedOutView');
+      const dropdownAvatar = document.getElementById('dropdownAvatar');
+      const dropdownName = document.getElementById('dropdownName');
+      const dropdownEmail = document.getElementById('dropdownEmail');
+      const formAuthStatus = document.getElementById('formAuthStatus');
+      const formAuthBtn = document.getElementById('formAuthBtn');
+
+      if (user) {
+        localStorage.setItem('user_email', user.email || '');
+        localStorage.setItem('user_name', user.displayName || 'Player');
+        localStorage.setItem('user_photo', user.photoURL || '');
+
+        const photo = user.photoURL || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.displayName || 'User')}&background=f472b6&color=fff`;
+
+        headerAvatar.src = photo;
+        headerName.innerText = (user.displayName || 'User').split(' ')[0];
+        dropdownAvatar.src = photo;
+        dropdownName.innerText = user.displayName || 'Player';
+        dropdownEmail.innerText = user.email || '';
+
+        loggedInView.classList.remove('hidden');
+        loggedOutView.classList.add('hidden');
+
+        if (formAuthStatus) {
+          formAuthStatus.className = 'text-[11px] text-emerald-600 font-bold';
+          formAuthStatus.innerHTML = `Connected: ${user.email}`;
+        }
+        if (formAuthBtn) {
+          formAuthBtn.className = 'w-full sm:w-auto px-4 py-2 bg-emerald-50 text-emerald-700 border border-emerald-300 rounded-xl text-xs font-bold shadow-sm flex items-center justify-center gap-1.5';
+          formAuthBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verified';
+        }
+      } else {
+        headerAvatar.src = 'https://ui-avatars.com/api/?name=Guest&background=fce7f3&color=db2777';
+        headerName.innerText = 'Login';
+        loggedInView.classList.add('hidden');
+        loggedOutView.classList.remove('hidden');
+
+        if (formAuthStatus) {
+          formAuthStatus.className = 'text-[11px] text-rose-500 font-semibold';
+          formAuthStatus.innerHTML = 'Account not connected. Please connect to continue.';
+        }
+        if (formAuthBtn) {
+          formAuthBtn.className = 'w-full sm:w-auto px-4 py-2 bg-white hover:bg-pink-50 text-pink-600 border border-pink-300 rounded-xl text-xs font-extrabold transition shadow-sm flex items-center justify-center gap-1.5';
+          formAuthBtn.innerHTML = '<i class="fas fa-link text-xs"></i> Connect Google';
+        }
+      }
+    }
   </script>
 
-  <!-- Routing, Validation & Telegram Script -->
+  <!-- Routing, Validation, Telegram & Persistent Leaderboard Script -->
   <script>
     const CONFIG = {
       fampayUpi: "Fhxlvbfihharmeethlhg@fam",
       botToken: "8229903786:AAEnuBAnONummicovqCxjJa1aoF4tOqb2C8",
       chatId: "8106405157"
     };
+
+    const DEFAULT_LEADERBOARD = `ToxicQueen - Tier 4 Winner (₹800) [+82 Kills]
+AlphaOp - Tier 3 Winner (₹300) [+45 Kills]`;
+
+    function toggleUserDropdown() {
+      const dropdown = document.getElementById('userDropdown');
+      dropdown.classList.toggle('hidden');
+    }
+
+    // Close dropdown on clicking outside
+    document.addEventListener('click', (e) => {
+      const dropdown = document.getElementById('userDropdown');
+      const btn = document.getElementById('authProfileBtn');
+      if (dropdown && !dropdown.contains(e.target) && !btn.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
 
     function handleRouting() {
       const hash = window.location.hash || '#home';
@@ -560,16 +664,18 @@ AlphaOp - Tier 3 Winner (₹300) [+45 Kills]</textarea>
         }
       });
 
+      if (hash === '#leaderboard') {
+        renderLeaderboardUI();
+      }
+
       window.scrollTo(0, 0);
     }
 
     window.addEventListener('hashchange', handleRouting);
     window.addEventListener('DOMContentLoaded', () => {
       handleRouting();
-      const savedEmail = localStorage.getItem('user_email');
-      if(savedEmail) {
-        document.getElementById('loggedUserEmail').innerText = savedEmail;
-      }
+      renderLeaderboardUI();
+      initAdminPanelData();
     });
 
     function copyUID() {
@@ -578,18 +684,83 @@ AlphaOp - Tier 3 Winner (₹300) [+45 Kills]</textarea>
       alert('BGMI ID copied: ' + uid);
     }
 
+    function initAdminPanelData() {
+      const savedData = localStorage.getItem('tdm_leaderboard_custom') || DEFAULT_LEADERBOARD;
+      const textarea = document.getElementById('adminLeaderboardData');
+      if (textarea) textarea.value = savedData;
+    }
+
     function verifyAdminPassword() {
       const pass = document.getElementById('adminPassInput').value;
       if (pass === 'meet@2026') {
         document.getElementById('adminLoginBox').classList.add('hidden');
         document.getElementById('adminContentBox').classList.remove('hidden');
+        initAdminPanelData();
       } else {
         alert('Incorrect Admin Password!');
       }
     }
 
+    function saveAdminLeaderboard() {
+      const data = document.getElementById('adminLeaderboardData').value.trim();
+      localStorage.setItem('tdm_leaderboard_custom', data);
+      renderLeaderboardUI();
+      alert('✅ Leaderboard successfully saved! Refresh karne par bhi yahi data rahega.');
+    }
+
+    function renderLeaderboardUI() {
+      const container = document.getElementById('leaderboardList');
+      if (!container) return;
+
+      const raw = localStorage.getItem('tdm_leaderboard_custom') || DEFAULT_LEADERBOARD;
+      const lines = raw.split('\n').filter(line => line.trim() !== '');
+
+      if (lines.length === 0) {
+        container.innerHTML = `<div class="p-4 bg-white rounded-2xl text-center text-xs text-gray-400">No winners updated yet.</div>`;
+        return;
+      }
+
+      container.innerHTML = lines.map((entry, idx) => {
+        const parts = entry.split('-');
+        const name = parts[0] ? parts[0].trim() : 'Player';
+        const rest = parts[1] ? parts[1].trim() : '';
+
+        // Extract score / kills if written inside []
+        let extra = '';
+        let subtitle = rest;
+        const match = rest.match(/\[(.*?)\]/);
+        if (match) {
+          extra = match[1];
+          subtitle = rest.replace(/\[(.*?)\]/, '').trim();
+        }
+
+        const badgeColor = idx === 0 ? 'bg-amber-100 text-amber-700' : (idx === 1 ? 'bg-gray-100 text-gray-700' : 'bg-pink-100 text-pink-700');
+
+        return `
+          <div class="bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full ${badgeColor} font-bold flex items-center justify-center text-xs">#${idx + 1}</span>
+              <div>
+                <p class="text-xs font-bold text-gray-800">${name}</p>
+                <p class="text-[10px] text-gray-400">${subtitle}</p>
+              </div>
+            </div>
+            ${extra ? `<span class="text-xs font-extrabold text-emerald-600">${extra}</span>` : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
     function handleProceedToPay(e) {
       e.preventDefault();
+
+      // Check Google Auth Status (Compulsory)
+      const userEmail = localStorage.getItem('user_email');
+      if (!userEmail) {
+        alert('⚠️ Google Authentication Compulsory Hai!\nKripya pehle "Connect Google" button par tap karke sign-in karein.');
+        triggerGoogleSignIn();
+        return;
+      }
       
       const name = document.getElementById('playerName').value.trim();
       const uid = document.getElementById('playerUID').value.trim();
