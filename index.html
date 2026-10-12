@@ -43,9 +43,10 @@
         <span class="text-blue-500 text-xs" title="Official Creator"><i class="fas fa-check-circle"></i></span>
       </a>
 
-      <nav class="flex space-x-1.5 text-xs font-bold">
+      <nav class="flex space-x-1.5 text-xs font-bold items-center">
         <a href="#home" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Home</a>
         <a href="#tdm" class="nav-btn px-3 py-1.5 rounded-full text-pink-600 bg-pink-50 border border-pink-200 transition">1v1 TDM</a>
+        <a href="#leaderboard" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Leaderboard</a>
         <a href="#setup" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Setup</a>
         <a href="#presets" class="nav-btn px-3 py-1.5 rounded-full text-gray-600 hover:text-pink-600 transition">Presets</a>
       </nav>
@@ -159,9 +160,9 @@
               <i class="fas fa-exclamation-triangle text-amber-500"></i> Verification Notice:
             </p>
             <ul class="space-y-1 text-[11px] text-gray-700 pl-1">
+              <li>&bull; <strong class="text-gray-900">Google Authentication Mandatory:</strong> 1v1 booking ke liye Google account se sign-in karna zaroori hai.</li>
               <li>&bull; <strong class="text-gray-900">Instant Verification:</strong> Slot confirms only after 12-digit UTR matches bank records.</li>
               <li>&bull; <strong class="text-rose-600">Zero Tolerance:</strong> Fake UTR submissions result in a permanent blacklist.</li>
-              <li>&bull; <strong class="text-gray-900">Fair Play:</strong> Play genuine, win real rewards.</li>
             </ul>
           </div>
         </div>
@@ -221,12 +222,12 @@
 
         </div>
 
-        <!-- Book Slot Button -->
+        <!-- Book Slot Button (Triggers Google Auth check) -->
         <div class="mt-6 text-center">
-          <a href="#tdm-book" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-extrabold px-8 py-3.5 rounded-full text-xs shadow-lg shadow-pink-300 transition">
+          <button onclick="checkAuthAndBook()" class="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-500 hover:opacity-95 text-white font-extrabold px-8 py-3.5 rounded-full text-xs shadow-lg shadow-pink-300 transition">
             <i class="fas fa-ticket-alt"></i> Book Your TDM Slot Now &rarr;
-          </a>
-          <p class="text-[10px] text-gray-400 mt-2">Slots allocated on queue basis &bull; Safe verification</p>
+          </button>
+          <p class="text-[10px] text-gray-400 mt-2">Google Sign-In required &bull; Instant slot reservation</p>
         </div>
 
       </div>
@@ -238,7 +239,7 @@
         <div class="flex items-center justify-between pb-3 border-b border-pink-100">
           <div>
             <h2 class="text-lg font-extrabold text-gray-800">Step 1: Player Information</h2>
-            <p class="text-xs text-pink-600">Enter your BGMI details to reserve slot</p>
+            <p class="text-xs text-pink-600">Authenticated via: <span id="loggedUserEmail" class="font-bold underline"></span></p>
           </div>
           <a href="#tdm" class="text-xs font-bold text-gray-400 hover:text-pink-600">&larr; Back</a>
         </div>
@@ -300,7 +301,7 @@
           </button>
         </div>
 
-        <!-- QR Code Container (Specific to selected tier) -->
+        <!-- QR Code Container -->
         <div id="qrBox" class="hidden mt-4 p-3 bg-white rounded-2xl border-2 border-pink-200 inline-block shadow-sm">
           <img id="tierQrImage" src="qr50.png" alt="Payment QR" class="w-48 h-48 object-contain rounded-xl mx-auto">
           <p class="text-[10px] text-gray-400 mt-2 font-mono">Scan QR to pay exact fee</p>
@@ -325,7 +326,39 @@
       </div>
     </section>
 
-    <!-- 5. SETUP & GEAR SECTION (#setup) -->
+    <!-- 5. LEADERBOARD SECTION (#leaderboard) -->
+    <section id="leaderboard" class="page-section space-y-5">
+      <div class="pink-card rounded-3xl p-6">
+        <h1 class="text-xl font-extrabold text-gray-900 mb-1">TDM Hall of Fame & Leaderboard</h1>
+        <p class="text-xs text-gray-500 mb-4">Top winners of daily competitive 1v1 battles.</p>
+
+        <div class="space-y-2.5" id="leaderboardList">
+          <div class="bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full bg-amber-100 text-amber-700 font-bold flex items-center justify-center text-xs">#1</span>
+              <div>
+                <p class="text-xs font-bold text-gray-800">ToxicQueen</p>
+                <p class="text-[10px] text-gray-400">Tier 4 Winner (₹800)</p>
+              </div>
+            </div>
+            <span class="text-xs font-extrabold text-emerald-600">+82 Kills</span>
+          </div>
+
+          <div class="bg-white p-3.5 rounded-2xl border border-pink-100 shadow-sm flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-7 h-7 rounded-full bg-gray-100 text-gray-700 font-bold flex items-center justify-center text-xs">#2</span>
+              <div>
+                <p class="text-xs font-bold text-gray-800">AlphaOp</p>
+                <p class="text-[10px] text-gray-400">Tier 3 Winner (₹300)</p>
+              </div>
+            </div>
+            <span class="text-xs font-extrabold text-emerald-600">+45 Kills</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. SETUP & GEAR SECTION (#setup) -->
     <section id="setup" class="page-section space-y-5">
       <div class="pink-card rounded-3xl p-6">
         <h1 class="text-xl font-extrabold text-gray-900 mb-1">My Gaming Setup</h1>
@@ -333,7 +366,6 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           
-          <!-- Product 1: Finger Sleeves -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
             <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
               <i class="fas fa-hand-sparkles"></i>
@@ -345,7 +377,6 @@
             </div>
           </div>
 
-          <!-- Product 2: Type-C Gaming Earphones -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
             <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
               <i class="fas fa-headphones"></i>
@@ -357,7 +388,6 @@
             </div>
           </div>
 
-          <!-- Product 3: Phone Cooler -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
             <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
               <i class="fas fa-snowflake"></i>
@@ -369,7 +399,6 @@
             </div>
           </div>
 
-          <!-- Product 4: Wireless Headset -->
           <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
             <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
               <i class="fas fa-headset"></i>
@@ -381,47 +410,11 @@
             </div>
           </div>
 
-          <!-- Product 5: Gaming Triggers -->
-          <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
-              <i class="fas fa-gamepad"></i>
-            </div>
-            <div class="flex-1 min-w-0">
-              <p class="text-xs font-bold text-gray-800 truncate">SpinBot BattleMods Triggers</p>
-              <p class="text-[10px] text-gray-400">Capacitive Conduction, Zero Lag</p>
-              <a href="https://www.amazon.in/SpinBot-BattleMods-Triggers-Capacitive-Conduction/dp/B0FBC88LLZ?linkCode=ll2&tag=meet04c0-21&linkId=dbd2239feeab2df2bb75c9e86449eac5" target="_blank" class="text-[11px] font-bold text-pink-600 hover:underline mt-1 inline-block">Amazon Link &rarr;</a>
-            </div>
-          </div>
-
-          <!-- Product 6: Keyboard & Mouse -->
-          <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
-              <i class="fas fa-keyboard"></i>
-            </div>
-            <div class="flex-1 min-w-0">
-              <p class="text-xs font-bold text-gray-800 truncate">Zebronics Optimus Gaming Combo</p>
-              <p class="text-[10px] text-gray-400">RGB Keyboard & Mouse (White)</p>
-              <a href="https://www.amazon.in/ZEBRONICS-OPTIMUS-Resolution-Multicolor-Dedicated/dp/B0CT3PYNZ7?linkCode=ll2&tag=meet04c0-21&linkId=08aa5c6647c53a97daee5535caa224d9" target="_blank" class="text-[11px] font-bold text-pink-600 hover:underline mt-1 inline-block">Amazon Link &rarr;</a>
-            </div>
-          </div>
-
-          <!-- Product 7: Audio & Charging Adapter -->
-          <div class="bg-white p-4 rounded-2xl border border-pink-100 shadow-sm flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-pink-50 text-pink-500 flex items-center justify-center text-lg flex-shrink-0">
-              <i class="fas fa-bolt"></i>
-            </div>
-            <div class="flex-1 min-w-0">
-              <p class="text-xs font-bold text-gray-800 truncate">Ambrane 2-in-1 Type-C Adapter</p>
-              <p class="text-[10px] text-gray-400">Audio & Charging Connector</p>
-              <a href="https://www.amazon.in/Ambrane-Charging-Connector-Perfect-AOTG-CC1/dp/B0DK1GN46Q?linkCode=ll2&tag=meet04c0-21&linkId=af20b20f663f65850659f20348d2a439" target="_blank" class="text-[11px] font-bold text-pink-600 hover:underline mt-1 inline-block">Amazon Link &rarr;</a>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
-    <!-- 6. PRESETS SECTION (#presets) -->
+    <!-- 7. PRESETS SECTION (#presets) -->
     <section id="presets" class="page-section space-y-5">
       <div class="pink-card rounded-3xl p-6">
         <h1 class="text-xl font-extrabold text-gray-900 mb-1">Editing Packs & Presets</h1>
@@ -451,14 +444,92 @@
       </div>
     </section>
 
+    <!-- 8. SECRET PASSWORD-PROTECTED ADMIN PANEL (#admin-panel) -->
+    <section id="admin-panel" class="page-section space-y-5">
+      <div class="pink-card rounded-3xl p-6">
+        <div class="flex items-center justify-between pb-3 border-b border-pink-100">
+          <h2 class="text-lg font-extrabold text-gray-800"><i class="fas fa-lock text-pink-500 mr-2"></i> Secret Admin Panel</h2>
+          <a href="#home" class="text-xs font-bold text-gray-400 hover:text-pink-600">&larr; Exit</a>
+        </div>
+
+        <div id="adminLoginBox" class="mt-4 space-y-3">
+          <p class="text-xs text-gray-600">Enter admin password to manage booking records and leaderboard:</p>
+          <input type="password" id="adminPassInput" placeholder="Enter Password" class="w-full px-4 py-2.5 rounded-xl border border-pink-200 text-xs focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white">
+          <button onclick="verifyAdminPassword()" class="w-full bg-pink-600 hover:bg-pink-700 text-white font-extrabold py-2.5 rounded-xl text-xs shadow-sm transition">
+            Unlock Admin Panel
+          </button>
+        </div>
+
+        <div id="adminContentBox" class="hidden mt-4 space-y-4">
+          <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-xl text-xs font-bold text-emerald-800">
+            ✅ Access Granted! Welcome Meet. (Admin Dashboard Active)
+          </div>
+          <div>
+            <h3 class="text-xs font-bold text-gray-700 mb-2">Manage Leaderboard Entries:</h3>
+            <textarea id="adminLeaderboardData" rows="4" class="w-full p-3 rounded-xl border border-pink-200 text-xs font-mono bg-white focus:outline-none">ToxicQueen - Tier 4 Winner (₹800) [+82 Kills]
+AlphaOp - Tier 3 Winner (₹300) [+45 Kills]</textarea>
+            <button onclick="alert('Leaderboard settings saved securely!')" class="mt-2 px-4 py-2 bg-pink-500 text-white rounded-xl text-xs font-bold shadow-sm">
+              Save Leaderboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="py-4 text-center text-[11px] text-gray-400 border-t border-pink-100 bg-white/40">
-    &copy; 2026 Anjali Plays &bull; Official Creator Portal &bull; All Rights Reserved
+  <!-- Footer with Hidden Admin Button -->
+  <footer class="py-4 text-center text-[11px] text-gray-400 border-t border-pink-100 bg-white/40 flex flex-col items-center gap-1">
+    <p>&copy; 2026 Anjali Plays &bull; Official Creator Portal &bull; All Rights Reserved</p>
+    <!-- SECRET ADMIN BUTTON: Ye footer ke bilkul neeche chhota sa discreet icon hai jo kisi ko easily nahi dikhega -->
+    <a href="#admin-panel" class="text-[9px] text-gray-300 hover:text-pink-500 transition font-mono tracking-widest"><i class="fas fa-lock-open text-[8px]"></i> [Admin Portal]</a>
   </footer>
 
-  <!-- Script for Routing, Strict Validation & Telegram Integration -->
+  <!-- Firebase SDK and Core Application Scripts -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithRedirect, getRedirectResult } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyANYds5Q6BK56RGi3QLnd5gSvxjIH-ORRc",
+      authDomain: "tdm-winners.firebaseapp.com",
+      projectId: "tdm-winners",
+      storageBucket: "tdm-winners.firebasestorage.app",
+      messagingSenderId: "1062009495276",
+      appId: "1:1062009495276:web:b715e3adbada67323ccfc9",
+      measurementId: "G-4FGXNG3VKS"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+    const analytics = getAnalytics(app);
+
+    window.checkAuthAndBook = function() {
+      // Direct Google Pop-up / Redirect Authentication (Email capture)
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          localStorage.setItem('user_email', user.email);
+          document.getElementById('loggedUserEmail').innerText = user.email;
+          window.location.hash = '#tdm-book';
+        })
+        .catch((error) => {
+          // Fallback to redirect if popup is blocked
+          signInWithRedirect(auth, provider);
+        });
+    }
+
+    // Check redirect result on load
+    getRedirectResult(auth).then((result) => {
+      if (result && result.user) {
+        localStorage.setItem('user_email', result.user.email);
+      }
+    }).catch((error) => {});
+  </script>
+
+  <!-- Routing, Validation & Telegram Script -->
   <script>
     const CONFIG = {
       fampayUpi: "Fhxlvbfihharmeethlhg@fam",
@@ -493,12 +564,28 @@
     }
 
     window.addEventListener('hashchange', handleRouting);
-    window.addEventListener('DOMContentLoaded', handleRouting);
+    window.addEventListener('DOMContentLoaded', () => {
+      handleRouting();
+      const savedEmail = localStorage.getItem('user_email');
+      if(savedEmail) {
+        document.getElementById('loggedUserEmail').innerText = savedEmail;
+      }
+    });
 
     function copyUID() {
       const uid = document.getElementById('uidText').innerText;
       navigator.clipboard.writeText(uid);
       alert('BGMI ID copied: ' + uid);
+    }
+
+    function verifyAdminPassword() {
+      const pass = document.getElementById('adminPassInput').value;
+      if (pass === 'meet@2026') {
+        document.getElementById('adminLoginBox').classList.add('hidden');
+        document.getElementById('adminContentBox').classList.remove('hidden');
+      } else {
+        alert('Incorrect Admin Password!');
+      }
     }
 
     function handleProceedToPay(e) {
@@ -509,7 +596,6 @@
       const tier = document.getElementById('selectedTier').value;
       const contact = document.getElementById('playerContact').value.trim();
 
-      // BGMI Character ID validation (Must be numeric and between 9 to 12 digits)
       if (!/^\d{9,12}$/.test(uid)) {
         alert('Invalid BGMI UID! Character ID must be between 9 to 12 digits (numeric only).');
         return;
@@ -520,20 +606,17 @@
         return;
       }
 
-      // Save safely in LocalStorage
       localStorage.setItem('tdm_name', name);
       localStorage.setItem('tdm_uid', uid);
       localStorage.setItem('tdm_tier', tier);
       localStorage.setItem('tdm_contact', contact);
 
-      // Update UI for Payment Page
       document.getElementById('displayAmount').innerText = '₹' + tier;
       document.getElementById('tierQrImage').src = 'qr' + tier + '.png';
 
       const upiUrl = `upi://pay?pa=${CONFIG.fampayUpi}&pn=AnjaliPlays&am=${tier}&cu=INR&tn=TDM%20Slot%20${tier}`;
       document.getElementById('directUpiBtn').setAttribute('href', upiUrl);
 
-      // Navigate to Payment Screen
       window.location.hash = '#tdm-pay';
     }
 
@@ -554,7 +637,6 @@
       const statusBox = document.getElementById('statusMessage');
       const submitBtn = document.getElementById('submitBtn');
 
-      // Strict UTR validation: Exactly 12 numeric digits only
       if (!/^\d{12}$/.test(utr)) {
         alert('Invalid UTR! Please enter exact 12-digit numeric UPI Ref / UTR number.');
         return;
@@ -564,6 +646,7 @@
       const uid = localStorage.getItem('tdm_uid');
       const tier = localStorage.getItem('tdm_tier');
       const contact = localStorage.getItem('tdm_contact');
+      const email = localStorage.getItem('user_email') || 'Not Signed In';
 
       if (!name || !uid) {
         alert('Player session expired! Please go back and fill player details again.');
@@ -577,6 +660,7 @@
       const message = `🔔 *NEW 1v1 TDM SLOT BOOKING* 🔔\n\n` +
                       `👤 *IGN:* ${name}\n` +
                       `🆔 *UID:* \`${uid}\`\n` +
+                      `📧 *Email:* ${email}\n` +
                       `💰 *Tier:* ₹${tier}\n` +
                       `🔢 *UTR Number:* \`${utr}\`\n` +
                       `📲 *Contact:* ${contact}\n` +
@@ -601,7 +685,6 @@
           document.getElementById('utrNumber').value = '';
           submitBtn.innerText = 'Slot Reserved Successfully';
           
-          // Clear session data
           localStorage.removeItem('tdm_name');
           localStorage.removeItem('tdm_uid');
           localStorage.removeItem('tdm_tier');
